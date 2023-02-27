@@ -1,4 +1,4 @@
-package com.example.testdeltasoft
+package pick.out.bet
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testdeltasoft">
+    package="pick.out.bet">
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
