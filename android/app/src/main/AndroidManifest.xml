@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="Olimp"
+        android:label="1bet"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         

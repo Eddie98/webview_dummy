@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "840115210318",
-    "project_id": "ivbol23",
-    "storage_bucket": "ivbol23.appspot.com"
+    "project_number": "692189987042",
+    "project_id": "onbebeshad",
+    "storage_bucket": "onbebeshad.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:840115210318:android:54cf8ce556c15e16975b1f",
+        "mobilesdk_app_id": "1:692189987042:android:c5f7851fde3ad66adddebb",
         "android_client_info": {
-          "package_name": "welcome.olimp"
+          "package_name": "pick.out.bet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "840115210318-2134lu8erao7hoa6h8prpi80se59dp19.apps.googleusercontent.com",
+          "client_id": "692189987042-v9dqobk79shn8i1lo23urol5lrem6d29.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2LMZngoymRSs_dl7OqVw_7bne5Zzk3gI"
+          "current_key": "AIzaSyDosB5L7_9EdWj0ye3ymBAanbQ4yh5hiOg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "840115210318-2134lu8erao7hoa6h8prpi80se59dp19.apps.googleusercontent.com",
+              "client_id": "692189987042-v9dqobk79shn8i1lo23urol5lrem6d29.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
