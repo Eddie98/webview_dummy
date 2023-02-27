@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840115210318",
+    "project_id": "ivbol23",
+    "storage_bucket": "ivbol23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840115210318:android:54cf8ce556c15e16975b1f",
+        "android_client_info": {
+          "package_name": "welcome.olimp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840115210318-2134lu8erao7hoa6h8prpi80se59dp19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2LMZngoymRSs_dl7OqVw_7bne5Zzk3gI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840115210318-2134lu8erao7hoa6h8prpi80se59dp19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
