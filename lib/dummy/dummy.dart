@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testdeltasoft/dummy/constants.dart';
+import 'package:testdeltasoft/dummy/widgets/snackbar.dart';
 import 'package:testdeltasoft/dummy/widgets/unfocusable.dart';
 
 import 'controller.dart';
@@ -18,161 +19,133 @@ class _DummyState extends State<Dummy> {
 
   List<Map<String, dynamic>> questionsAndAnswers = [
     {
-      'question': 'What is the name of the most common grip in table tennis?',
-      'correctAnswer': 1,
+      'id': 0,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/0.gif',
+      'correctAnswer': 3,
       'userAnswer': -1,
       'answers': [
-        'Pinch grip',
-        'Hand shake grip',
-        'Death grip',
-        'Low squeeze grip',
+        'Table tennis',
+        'Dodgeball',
+        'Basque pelota',
+        'Squash',
       ],
     },
     {
-      'question': 'What is the ready stance for playing table tennis?',
+      'id': 1,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/1.gif',
+      'correctAnswer': 1,
+      'userAnswer': -1,
+      'answers': [
+        'Formula One',
+        'Speedskating',
+        'Steeplechase',
+        'Cricket',
+      ],
+    },
+    {
+      'id': 2,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/2.gif',
       'correctAnswer': 2,
       'userAnswer': -1,
       'answers': [
-        'Straight leg, elbows bent, arms at side.',
-        'Straight leg, elbor\\ws straight, arms out.',
-        'Bent legs, elbows bent, arms out',
-        'Beng legs, elboes straight, arms at side.',
+        'Field lacrosse',
+        'Korfball',
+        'Field hockey',
+        'Association football/Soccer',
       ],
     },
     {
-      'question': 'The old method of scoring table tennis was:',
-      'correctAnswer': 0,
-      'userAnswer': -1,
-      'answers': [
-        'Score to 21 and switch serve every 5 points',
-        'Score to 11 and switch serve every 3 points',
-        'Score to 15 and switch serve every 2 points',
-        'Score to 18 points and switch serve every 3 points',
-      ],
-    },
-    {
-      'question': 'The revised method of scoring table tennis is:',
+      'id': 3,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/3.gif',
       'correctAnswer': 3,
       'userAnswer': -1,
       'answers': [
-        'Score to 21 and switch serve every 5 points.',
-        'Score to 15 and switch serve every 2 points',
-        'Score to 18 points and switch serve every 3 points',
-        'Score to 11 points and switch serve every 2 points.',
+        'Korfball',
+        'Dodgeball',
+        'Basketball',
+        'Handball',
       ],
     },
     {
-      'question': 'Table tennis always ends at a specific score.',
+      'id': 4,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/4.gif',
       'correctAnswer': 1,
       'userAnswer': -1,
       'answers': [
-        'True',
-        'False',
+        'Roller derby',
+        'Ice hockey',
+        'Curling',
+        'Figure Skating',
       ],
     },
     {
-      'question': 'When the score is tied 10 to 10 it is called',
-      'correctAnswer': 2,
-      'userAnswer': -1,
-      'answers': [
-        'Uno',
-        'Twice',
-        'Deuce',
-        'Dos',
-      ],
-    },
-    {
-      'question':
-          'What is it called when hitting the net while serving and the ball successfully makes it over the net?',
+      'id': 5,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/5.gif',
       'correctAnswer': 3,
       'userAnswer': -1,
       'answers': [
-        'Set',
-        'Deuce',
-        'Dos',
-        'Let',
+        'Carom billiards',
+        'Boules',
+        'Baseball',
+        'Snooker',
       ],
     },
     {
-      'question': 'Who gets the point when a let occurs on a serve?',
-      'correctAnswer': 2,
-      'userAnswer': -1,
-      'answers': [
-        'The server',
-        'The defender',
-        'No one',
-        'Everybody',
-      ],
-    },
-    {
-      'question': 'The forehand follow through should go where?',
-      'correctAnswer': 0,
-      'userAnswer': -1,
-      'answers': [
-        'Up towards the face like a salute',
-        'Down towards the ground',
-        'Accross the chest',
-        'Straight towards the shot',
-      ],
-    },
-    {
-      'question': 'The back hand follow through should go where?',
+      'id': 6,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/6.gif',
       'correctAnswer': 3,
       'userAnswer': -1,
       'answers': [
-        'Up towards the face like a salute',
-        'Down towards the ground',
-        'Accross the chest',
-        'Straight towards the shot',
+        'Waterpolo',
+        'Handball',
+        'Basque pelota',
+        'Competitive swimming',
       ],
     },
     {
-      'question': 'Creating topspin is a defensive strategy.',
-      'correctAnswer': 1,
-      'userAnswer': -1,
-      'answers': [
-        'True',
-        'False',
-      ],
-    },
-    {
-      'question': 'To create backspin the ball should be hit on top.',
-      'correctAnswer': 1,
-      'userAnswer': -1,
-      'answers': [
-        'True',
-        'False',
-      ],
-    },
-    {
-      'question': 'To create topspin the ball should be hit on top.',
+      'id': 7,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/7.gif',
       'correctAnswer': 0,
       'userAnswer': -1,
       'answers': [
-        'True',
-        'False',
+        'Korfball',
+        'Netball',
+        'Basketball',
+        'Squash',
       ],
     },
     {
-      'question': 'A defensive move in table tennis is the',
+      'id': 8,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/8.gif',
       'correctAnswer': 0,
       'userAnswer': -1,
       'answers': [
-        'Block',
-        'Push',
-        'Loop',
-        'Topspin',
+        'American football',
+        'Australian rules football',
+        'Cricket',
+        'Gaelic football/Hurling',
       ],
     },
     {
-      'question': 'A foul in table tennis is',
+      'id': 9,
+      'question': 'What kind of sport is usually played on this field or area?',
+      'picture': 'assets/9.gif',
       'correctAnswer': 3,
       'userAnswer': -1,
       'answers': [
-        'Touching the table',
-        'Cupping the ball while serving',
-        'Toucing the net',
-        'All of the above',
+        'Competitive swimming',
+        'Cricket',
+        'Speedskating',
+        'Track running',
       ],
     },
   ];
@@ -180,11 +153,13 @@ class _DummyState extends State<Dummy> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return WillPopScope(
       onWillPop: () async => false,
       child: UnFocusable(
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.blue[100],
           extendBodyBehindAppBar: true,
           body: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(16.0, 92.0, 16.0, 32.0),
@@ -193,7 +168,8 @@ class _DummyState extends State<Dummy> {
               children: [
                 Text(
                   Texts.mainTitle,
-                  style: GoogleFonts.montserrat(
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.actor(
                     color: Colors.black,
                     fontSize: 32.0,
                     fontWeight: FontWeight.w500,
@@ -202,33 +178,35 @@ class _DummyState extends State<Dummy> {
                 const SizedBox(height: 12.0),
                 Text(
                   Texts.mainDescription,
-                  style: GoogleFonts.montserrat(
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.actor(
                     color: Colors.black,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 32.0),
                 ...List.generate(
                   questionsAndAnswers.length,
                   (index) {
                     final item = questionsAndAnswers.elementAt(index);
                     return Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 42.0),
                       child: _Item(
                         index: index,
+                        id: item['id'],
+                        picture: item['picture'],
                         isShowCorrectAndInCorrenctAnswers:
                             isShowCorrectAndInCorrenctAnswers,
                         question: item['question'],
                         correctAnswer: item['correctAnswer'],
                         userAnswer: item['userAnswer'],
                         answers: item['answers'],
-                        onSelectItem: (String question, int index) {
+                        onSelectItem: (int id, int i) {
                           setState(() {
                             questionsAndAnswers = questionsAndAnswers
                                 .map<Map<String, dynamic>>((e) {
-                              if (e['question'] == question) {
-                                e['userAnswer'] = index;
+                              if (e['id'] == id) {
+                                e['userAnswer'] = i;
                               }
                               return e;
                             }).toList();
@@ -240,19 +218,46 @@ class _DummyState extends State<Dummy> {
                 ),
                 const SizedBox(height: 32.0),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: size.width,
+                  height: 45.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        isShowCorrectAndInCorrenctAnswers =
-                            !isShowCorrectAndInCorrenctAnswers;
-                      });
+                      if (questionsAndAnswers
+                          .any((e) => e['userAnswer'] == -1)) {
+                        showSnackbar(
+                          context: context,
+                          text: 'Answer all questions!',
+                        );
+                      } else {
+                        setState(() {
+                          isShowCorrectAndInCorrenctAnswers =
+                              !isShowCorrectAndInCorrenctAnswers;
+                        });
+
+                        final correctAnswersLength = questionsAndAnswers
+                            .where((e) => e['userAnswer'] == e['correctAnswer'])
+                            .length;
+                        final questionsLength = questionsAndAnswers.length;
+
+                        showSnackbar(
+                          context: context,
+                          text:
+                              'You answered $correctAnswersLength questions out of $questionsLength correctly ',
+                        );
+                      }
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      ),
+                      backgroundColor: Colors.indigo,
+                    ),
                     child: Text(
-                      'Submit',
-                      style: GoogleFonts.montserrat(
+                      'Show results',
+                      style: GoogleFonts.actor(
                         color: Colors.white,
                         fontSize: 20.0,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -269,6 +274,8 @@ class _DummyState extends State<Dummy> {
 class _Item extends StatelessWidget {
   const _Item({
     required this.index,
+    required this.id,
+    required this.picture,
     required this.isShowCorrectAndInCorrenctAnswers,
     required this.question,
     required this.correctAnswer,
@@ -278,25 +285,36 @@ class _Item extends StatelessWidget {
   });
 
   final int index;
+  final int id;
+  final String picture;
   final bool isShowCorrectAndInCorrenctAnswers;
   final String question;
   final int correctAnswer;
   final int userAnswer;
   final List<String> answers;
-  final void Function(String, int) onSelectItem;
+  final void Function(int, int) onSelectItem;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${index + 1}. $question',
-          style: GoogleFonts.montserrat(
+          question,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.actor(
             color: Colors.black,
             fontSize: 20.0,
             fontWeight: FontWeight.w600,
           ),
+        ),
+        const SizedBox(height: 8.0),
+        Image.asset(
+          picture,
+          fit: BoxFit.cover,
+          width: size.width,
         ),
         const SizedBox(height: 8.0),
         ...List.generate(answers.length, (i) {
@@ -304,26 +322,28 @@ class _Item extends StatelessWidget {
 
           return CheckboxListTile(
             value: i == userAnswer,
-            tileColor: isShowCorrectAndInCorrenctAnswers
-                ? (userAnswer == correctAnswer && i == correctAnswer) ||
-                        i == correctAnswer
-                    ? Colors.greenAccent
-                    : i == userAnswer
-                        ? Colors.redAccent
-                        : Colors.transparent
-                : Colors.transparent,
+            tileColor: Colors.transparent,
             title: Text(
               answer,
-              style: GoogleFonts.montserrat(
-                color: Colors.black,
+              style: GoogleFonts.actor(
+                color: isShowCorrectAndInCorrenctAnswers
+                    ? (userAnswer == correctAnswer && i == correctAnswer) ||
+                            i == correctAnswer
+                        ? Colors.green
+                        : i == userAnswer
+                            ? Colors.red
+                            : Colors.black
+                    : Colors.black,
                 fontSize: 18.0,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
               ),
             ),
+            activeColor: Colors.pinkAccent,
+            checkboxShape: const RoundedRectangleBorder(),
             visualDensity: VisualDensity.compact,
-            onChanged: (bool? value) => onSelectItem(question, i),
+            onChanged: (bool? value) => onSelectItem(id, i),
           );
-        }),
+        })
       ],
     );
   }
