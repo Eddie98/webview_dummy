@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pick.out.bet">
+    package="sports.cases">
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="1bet"
+        android:label="Bit"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         

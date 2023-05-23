@@ -9,6 +9,7 @@ import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'dummy/controller.dart';
 import 'dummy/dummy.dart';
@@ -95,8 +96,17 @@ class _MyAppState extends State<MyApp> {
     final prefs = await SharedPreferences.getInstance();
 
     String remoteUrl = '';
+    bool isCheckVPN = false;
 
     final localRemoteUrl = prefs.getString('remoteUrl') ?? '';
+    final localIsCheckVPN = prefs.getBool('isCheckVPN') ?? false;
+
+    if (localIsCheckVPN) {
+      if (await isVpnActive()) {
+        return '';
+      }
+    }
+
     if (localRemoteUrl.isNotEmpty) return localRemoteUrl;
 
     try {
@@ -108,6 +118,7 @@ class _MyAppState extends State<MyApp> {
       );
       await remoteConfig.fetchAndActivate();
       remoteUrl = remoteConfig.getString('url').trim();
+      isCheckVPN = remoteConfig.getBool('to');
     } catch (e) {
       return '';
     }
@@ -121,6 +132,7 @@ class _MyAppState extends State<MyApp> {
     }
 
     prefs.setString('remoteUrl', remoteUrl);
+    prefs.setBool('isCheckVPN', isCheckVPN);
 
     return remoteUrl;
   }
@@ -174,6 +186,21 @@ class _MyAppState extends State<MyApp> {
 
   bool _checkGoogle(String key) =>
       deviceInfo![key].toLowerCase().contains('google');
+
+  Future<bool> isVpnActive() async {
+    // Check if the platform version is below Android 5.0
+    if (Platform.isAndroid && int.parse(Platform.version.split('.')[0]) < 5) {
+      return false;
+    }
+
+    var connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.vpn) {
+      return true;
+    }
+
+    return false;
+  }
 }
 
 class RemoteConfigWidget extends StatefulWidget {

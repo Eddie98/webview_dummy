@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "692189987042",
-    "project_id": "onbebeshad",
-    "storage_bucket": "onbebeshad.appspot.com"
+    "project_number": "721585648120",
+    "project_id": "mrbitbeshad",
+    "storage_bucket": "mrbitbeshad.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:692189987042:android:c5f7851fde3ad66adddebb",
+        "mobilesdk_app_id": "1:721585648120:android:94c6ec8c05585490fa660d",
         "android_client_info": {
-          "package_name": "pick.out.bet"
+          "package_name": "sports.cases"
         }
       },
       "oauth_client": [
         {
-          "client_id": "692189987042-v9dqobk79shn8i1lo23urol5lrem6d29.apps.googleusercontent.com",
+          "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDosB5L7_9EdWj0ye3ymBAanbQ4yh5hiOg"
+          "current_key": "AIzaSyBbeWrzCmHXTaVAERLKuIheclwN00x-huw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "692189987042-v9dqobk79shn8i1lo23urol5lrem6d29.apps.googleusercontent.com",
+              "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
