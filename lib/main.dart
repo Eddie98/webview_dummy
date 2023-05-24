@@ -5,10 +5,11 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'dummy/controller.dart';
@@ -16,6 +17,9 @@ import 'dummy/dummy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Permission.camera.request();
+
   await Firebase.initializeApp();
   Get.put(Controller());
   runApp(const MyApp());
@@ -216,44 +220,81 @@ class RemoteConfigWidget extends StatefulWidget {
 }
 
 class _RemoteConfigWidgetState extends State<RemoteConfigWidget> {
-  late WebViewController controller;
+  final GlobalKey webViewKey = GlobalKey();
+
+  late PullToRefreshController pullToRefreshController;
+  InAppWebViewController? webViewController;
+
+  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
+    crossPlatform: InAppWebViewOptions(
+      mediaPlaybackRequiresUserGesture: false,
+      javaScriptEnabled: true,
+    ),
+    android: AndroidInAppWebViewOptions(
+      useHybridComposition: true,
+    ),
+  );
 
   @override
   void initState() {
     super.initState();
 
-    controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.black)
-      ..addJavaScriptChannel(
-        'Toaster',
-        onMessageReceived: (JavaScriptMessage message) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(message.message)),
+    pullToRefreshController = PullToRefreshController(
+      options: PullToRefreshOptions(
+        color: Colors.blue,
+      ),
+      onRefresh: () async {
+        if (Platform.isAndroid) {
+          webViewController?.reload();
+        } else if (Platform.isIOS) {
+          webViewController?.loadUrl(
+            urlRequest: URLRequest(url: await webViewController?.getUrl()),
           );
-        },
-      )
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onWebResourceError: (WebResourceError error) async {
-            controller.loadRequest(Uri.parse(widget.url));
-          },
-        ),
-      )
-      ..loadRequest(Uri.parse(widget.url));
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final hasNavHistory = await controller.canGoBack();
-        if (hasNavHistory) await controller.goBack();
+        final hasNavHistory = await webViewController?.canGoBack() ?? false;
+        if (hasNavHistory) await webViewController?.goBack();
         return false;
       },
       child: Scaffold(
         body: SafeArea(
-          child: WebViewWidget(controller: controller),
+          child: InAppWebView(
+            key: webViewKey,
+            initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+            initialOptions: options,
+            pullToRefreshController: pullToRefreshController,
+            onWebViewCreated: (controller) {
+              webViewController = controller;
+            },
+            androidOnPermissionRequest: (controller, origin, resources) async {
+              return PermissionRequestResponse(
+                resources: resources,
+                action: PermissionRequestResponseAction.GRANT,
+              );
+            },
+            onLoadStop: (controller, url) async {
+              pullToRefreshController.endRefreshing();
+            },
+            onLoadError: (controller, url, code, message) {
+              pullToRefreshController.endRefreshing();
+            },
+            onProgressChanged: (controller, progress) {
+              if (progress == 100) {
+                pullToRefreshController.endRefreshing();
+              }
+            },
+            onUpdateVisitedHistory: (controller, url, androidIsReload) {},
+            onConsoleMessage: (controller, consoleMessage) {
+              print(consoleMessage);
+            },
+          ),
         ),
       ),
     );
