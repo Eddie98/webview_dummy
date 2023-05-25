@@ -22,8 +22,6 @@ class _DummyState extends State<Dummy> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return WillPopScope(
       onWillPop: () async => false,
       child: UnFocusable(

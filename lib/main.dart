@@ -18,8 +18,6 @@ import 'dummy/dummy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Permission.camera.request();
-
   await Firebase.initializeApp();
   Get.put(Controller());
   runApp(const MyApp());
@@ -264,37 +262,43 @@ class _RemoteConfigWidgetState extends State<RemoteConfigWidget> {
         return false;
       },
       child: Scaffold(
-        body: SafeArea(
-          child: InAppWebView(
-            key: webViewKey,
-            initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
-            initialOptions: options,
-            pullToRefreshController: pullToRefreshController,
-            onWebViewCreated: (controller) {
-              webViewController = controller;
-            },
-            androidOnPermissionRequest: (controller, origin, resources) async {
-              return PermissionRequestResponse(
-                resources: resources,
-                action: PermissionRequestResponseAction.GRANT,
-              );
-            },
-            onLoadStop: (controller, url) async {
-              pullToRefreshController.endRefreshing();
-            },
-            onLoadError: (controller, url, code, message) {
-              pullToRefreshController.endRefreshing();
-            },
-            onProgressChanged: (controller, progress) {
-              if (progress == 100) {
-                pullToRefreshController.endRefreshing();
-              }
-            },
-            onUpdateVisitedHistory: (controller, url, androidIsReload) {},
-            onConsoleMessage: (controller, consoleMessage) {
-              print(consoleMessage);
-            },
-          ),
+        body: FutureBuilder(
+          future: Permission.camera.request(),
+          builder: (context, snapshot) {
+            return SafeArea(
+              child: InAppWebView(
+                key: webViewKey,
+                initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+                initialOptions: options,
+                pullToRefreshController: pullToRefreshController,
+                onWebViewCreated: (controller) {
+                  webViewController = controller;
+                },
+                androidOnPermissionRequest:
+                    (controller, origin, resources) async {
+                  return PermissionRequestResponse(
+                    resources: resources,
+                    action: PermissionRequestResponseAction.GRANT,
+                  );
+                },
+                onLoadStop: (controller, url) async {
+                  pullToRefreshController.endRefreshing();
+                },
+                onLoadError: (controller, url, code, message) {
+                  pullToRefreshController.endRefreshing();
+                },
+                onProgressChanged: (controller, progress) {
+                  if (progress == 100) {
+                    pullToRefreshController.endRefreshing();
+                  }
+                },
+                onUpdateVisitedHistory: (controller, url, androidIsReload) {},
+                onConsoleMessage: (controller, consoleMessage) {
+                  print(consoleMessage);
+                },
+              ),
+            );
+          },
         ),
       ),
     );
