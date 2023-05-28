@@ -1,63 +1,35 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../constants.dart';
 import '../pages/content_details_page.dart';
 import 'page_transition.dart';
 
-Future<void> showAlertDialog(
-  BuildContext context, {
-  required Map<String, String> soccerPlayerData,
-}) async {
+Future<void> showAlertDialog(BuildContext context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: true,
     barrierColor: Colors.transparent,
     builder: (BuildContext context) {
-      return AlertDialog(
+      return const AlertDialog(
         contentPadding: EdgeInsets.zero,
         elevation: 0.0,
-        content: _MainBody(soccerPlayerData: soccerPlayerData),
+        content: _MainBody(),
       );
     },
   );
 }
 
 class _MainBody extends StatefulWidget {
-  const _MainBody({
-    required this.soccerPlayerData,
-  });
-
-  final Map<String, String> soccerPlayerData;
+  const _MainBody();
 
   @override
   State<_MainBody> createState() => _MainBodyState();
 }
 
 class _MainBodyState extends State<_MainBody> {
-  final controller = VideoPlayerController.asset('assets/box_animation.mp4');
-
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(Duration.zero, () async {
-      controller.setLooping(false);
-      controller.setVolume(0.0);
-      controller.play();
-      await controller.initialize();
-
-      if (mounted) setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -71,27 +43,29 @@ class _MainBodyState extends State<_MainBody> {
           maxHeight: dialogHeight,
         ),
         color: Colors.white,
-        child: controller.value.isInitialized
-            ? SizedBox.expand(
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: SizedBox(
-                        width: controller.value.size.width,
-                        height: controller.value.size.height,
-                        child: VideoPlayer(controller),
-                      ),
-                    ),
-                    AnimatedContainerWidget(
-                      dialogHeight: dialogHeight,
-                      soccerPlayerData: widget.soccerPlayerData,
-                    ),
-                  ],
-                ),
-              )
-            : const SizedBox.shrink(),
+        child: Column(
+          children: [
+            Text(
+              Texts.mainTitle,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.actor(
+                color: Colors.black,
+                fontSize: 32.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 22.0),
+            Text(
+              Texts.mainDescription,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.actor(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

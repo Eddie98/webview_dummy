@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 class Texts {
-  static const String mainTitle = 'Greatest football players';
+  static const String mainTitle = 'Rock Paper Scissors Game';
   static const String mainDescription =
-      'Click on one of the boxes to get a football player card. By clicking on the card, you can go to the page with detailed information about the player. \n\nBy clicking on the icon on the top right, you can get to the page of all players and select the player you are interested in';
+      'This is a rock paper scissors game. Try to get as many wins and as few losses as possible.\n\nClick on one of the buttons below to start the game.\n\nFor every victory or defeat you will get one point. If the number of defeats in a row is equal to 3, then the points will be reset.';
   static const String startButtonText = '';
 }
 
