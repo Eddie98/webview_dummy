@@ -7,7 +7,7 @@ flutter pub global activate rename
 
 app package name change:
 1. in all places change bundleId
-2. flutter pub global run rename --bundleId sports.cases
+2. flutter pub global run rename --bundleId stone.paper.play
 
 app name change:
-flutter pub global run rename --appname "Bit"
+flutter pub global run rename --appname "Snai"

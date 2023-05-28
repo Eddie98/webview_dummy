@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "721585648120",
-    "project_id": "mrbitbeshad",
-    "storage_bucket": "mrbitbeshad.appspot.com"
+    "project_number": "543801189512",
+    "project_id": "stopl-294fa",
+    "storage_bucket": "stopl-294fa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721585648120:android:94c6ec8c05585490fa660d",
+        "mobilesdk_app_id": "1:543801189512:android:68dd8a044d13a713ea6b3d",
         "android_client_info": {
-          "package_name": "sports.cases"
+          "package_name": "stone.paper.play"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBbeWrzCmHXTaVAERLKuIheclwN00x-huw"
+          "current_key": "AIzaSyAUimNsrTcZzBYUAGi2IGLZz1fsriBPTMM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
