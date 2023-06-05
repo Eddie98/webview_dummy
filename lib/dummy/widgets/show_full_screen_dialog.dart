@@ -467,11 +467,14 @@ class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
                         widget.cardclickCallback();
                       }
                     },
-                    child: Image.asset(
-                      'assets/card_back.jpg',
-                      width: cardWidth,
-                      height: cardHeight,
-                      fit: BoxFit.contain,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6.0),
+                      child: Image.asset(
+                        'assets/background.jpg',
+                        width: cardWidth,
+                        height: cardHeight,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
           ),
