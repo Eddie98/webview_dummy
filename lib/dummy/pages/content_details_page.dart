@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/rich_text.dart';
-
 class ContentDetailsPage extends StatelessWidget {
   const ContentDetailsPage({
     super.key,
     required this.soccerPlayerData,
   });
 
-  final Map<String, String> soccerPlayerData;
+  final Map<String, dynamic> soccerPlayerData;
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +14,10 @@ class ContentDetailsPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      extendBodyBehindAppBar: false,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.black54,
+        backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 32.0),
@@ -29,13 +27,14 @@ class ContentDetailsPage extends StatelessWidget {
             Image.asset(
               soccerPlayerData['image']!,
               width: size.width,
-              fit: BoxFit.fitWidth,
+              height: size.height / 2,
+              fit: BoxFit.cover,
             ),
             const SizedBox(height: 12.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                soccerPlayerData['name']!,
+                soccerPlayerData['correctAnswer']!,
                 style: const TextStyle(
                   fontSize: 26.0,
                   fontWeight: FontWeight.w600,
@@ -52,44 +51,45 @@ class ContentDetailsPage extends StatelessWidget {
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                   color: Colors.black,
+                  height: 1.4,
                 ),
               ),
             ),
             const SizedBox(height: 24.0),
-            RichTextWidget(
-              title: 'Height',
-              value: soccerPlayerData['height']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Weight',
-              value: soccerPlayerData['weight']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Team',
-              value: soccerPlayerData['team']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Red cards count',
-              value: soccerPlayerData['redCardCounts']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Yellow cards count',
-              value: soccerPlayerData['yellowCardCounts']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Goals count',
-              value: soccerPlayerData['goalsCount']!,
-            ),
-            const SizedBox(height: 12.0),
-            RichTextWidget(
-              title: 'Goals count',
-              value: soccerPlayerData['description']!,
-            ),
+            // RichTextWidget(
+            //   title: 'Height',
+            //   value: soccerPlayerData['height']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Weight',
+            //   value: soccerPlayerData['weight']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Team',
+            //   value: soccerPlayerData['team']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Red cards count',
+            //   value: soccerPlayerData['redCardCounts']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Yellow cards count',
+            //   value: soccerPlayerData['yellowCardCounts']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Goals count',
+            //   value: soccerPlayerData['goalsCount']!,
+            // ),
+            // const SizedBox(height: 12.0),
+            // RichTextWidget(
+            //   title: 'Goals count',
+            //   value: soccerPlayerData['description']!,
+            // ),
           ],
         ),
       ),

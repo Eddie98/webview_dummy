@@ -3,9 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-import '../pages/content_details_page.dart';
-import 'page_transition.dart';
-
 Future<void> showAlertDialog(
   BuildContext context, {
   required Map<String, String> soccerPlayerData,
@@ -62,7 +59,7 @@ class _MainBodyState extends State<_MainBody> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final dialogHeight = size.height * .6;
+    final dialogHeight = size.height;
 
     return SingleChildScrollView(
       child: Container(
@@ -71,6 +68,7 @@ class _MainBodyState extends State<_MainBody> {
           maxHeight: dialogHeight,
         ),
         color: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: controller.value.isInitialized
             ? SizedBox.expand(
                 child: Stack(
@@ -115,6 +113,8 @@ class AnimatedContainerWidget extends StatefulWidget {
 class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
   bool hasAppeared = false;
   bool hasFlipped = false;
+  bool hasRightGone = false;
+  bool hasWrongGone = false;
 
   @override
   void initState() {
@@ -143,7 +143,17 @@ class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
       duration: const Duration(seconds: 1),
       curve: Curves.easeInOut,
       transform: hasAppeared
-          ? Matrix4.translationValues(0, -(widget.dialogHeight - cardHeight), 0)
+          ? Matrix4.translationValues(
+              hasRightGone
+                  ? cardWidth
+                  : hasWrongGone
+                      ? -size.width
+                      : 0,
+              -(hasRightGone
+                  ? widget.dialogHeight
+                  : (widget.dialogHeight * .7) - cardHeight),
+              0,
+            )
           : Matrix4.identity(),
       child: AnimatedOpacity(
         duration: const Duration(seconds: 1),
@@ -168,9 +178,13 @@ class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
                         (context, child, frame, wasSynchronouslyLoaded) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(pageTransition(
-                              ContentDetailsPage(
-                                  soccerPlayerData: widget.soccerPlayerData)));
+                          // Navigator.of(context).push(pageTransition(
+                          //     ContentDetailsPage(
+                          //         soccerPlayerData: widget.soccerPlayerData)));
+
+                          setState(() {
+                            hasWrongGone = true;
+                          });
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(6.0),

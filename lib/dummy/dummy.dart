@@ -6,8 +6,9 @@ import 'package:testdeltasoft/dummy/widgets/unfocusable.dart';
 
 import 'controller.dart';
 import 'pages/all_items.dart';
+import 'pages/several_items.dart';
 import 'widgets/page_transition.dart';
-import 'widgets/show_alert_dialog.dart';
+import 'widgets/show_full_screen_dialog.dart';
 import 'widgets/sliver_grid.dart';
 
 class Dummy extends StatefulWidget {
@@ -18,10 +19,9 @@ class Dummy extends StatefulWidget {
 }
 
 class _DummyState extends State<Dummy> {
-  final getxCtrl = Get.find<Controller>();
-
   @override
   Widget build(BuildContext context) {
+    final getxCtrl = Get.find<Controller>();
     final size = MediaQuery.of(context).size;
 
     return WillPopScope(
@@ -37,9 +37,24 @@ class _DummyState extends State<Dummy> {
               IconButton(
                 onPressed: () {
                   Navigator.of(context)
+                      .push(pageTransition(const SeveralItemsPage()));
+                },
+                icon: const Icon(Icons.check),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context)
                       .push(pageTransition(const AllItemsPage()));
                 },
                 icon: const Icon(Icons.people),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    getxCtrl.correctAnswersIdList.clear();
+                  });
+                },
+                icon: const Icon(Icons.replay_outlined),
               ),
             ],
           ),
@@ -73,29 +88,31 @@ class _DummyState extends State<Dummy> {
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 8.0,
-                    crossAxisSpacing: 8.0,
-                    height: 100.0,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12.0,
+                    crossAxisSpacing: 12.0,
+                    height: 200.0,
                   ),
                   padding: EdgeInsets.zero,
-                  itemCount: soccerPlayersList.length * 2,
+                  itemCount: getxCtrl.playersList.length,
                   itemBuilder: (_, int index) {
+                    final item = getxCtrl.playersList.elementAt(index);
+
                     return GestureDetector(
                       onTap: () {
-                        final soccerPlayersListClone = [...soccerPlayersList];
-                        soccerPlayersListClone.shuffle();
+                        // final playersListClone = [...playersList];
+                        // playersListClone.shuffle();
 
-                        showAlertDialog(
-                          context,
-                          soccerPlayerData: soccerPlayersListClone.first,
-                        );
+                        if (!getxCtrl.correctAnswersIdList
+                            .contains(item['id'])) {
+                          showFullScreenDialog(context, soccerPlayerData: item);
+                        }
                       },
                       child: Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/box_image.png'),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),

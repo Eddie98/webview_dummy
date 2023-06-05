@@ -6,13 +6,17 @@ import '../controller.dart';
 import '../widgets/sliver_grid.dart';
 import 'content_details_page.dart';
 
-class AllItemsPage extends StatelessWidget {
-  const AllItemsPage({super.key});
+class SeveralItemsPage extends StatelessWidget {
+  const SeveralItemsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final getxCtrl = Get.find<Controller>();
     final size = MediaQuery.of(context).size;
+
+    final items = getxCtrl.playersList
+        .where((e) => getxCtrl.correctAnswersIdList.contains(e['id']))
+        .toList();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -30,9 +34,9 @@ class AllItemsPage extends StatelessWidget {
           height: 250.0,
         ),
         padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 32.0),
-        itemCount: getxCtrl.playersList.length,
+        itemCount: items.length,
         itemBuilder: (_, int index) {
-          final item = getxCtrl.playersList[index];
+          final item = items[index];
 
           return GestureDetector(
             onTap: () {
