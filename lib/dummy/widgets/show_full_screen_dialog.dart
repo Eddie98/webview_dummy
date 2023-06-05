@@ -468,7 +468,7 @@ class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
                       }
                     },
                     child: Image.asset(
-                      'assets/card_back.png',
+                      'assets/card_back.jpg',
                       width: cardWidth,
                       height: cardHeight,
                       fit: BoxFit.contain,

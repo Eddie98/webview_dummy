@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "721585648120",
-    "project_id": "mrbitbeshad",
-    "storage_bucket": "mrbitbeshad.appspot.com"
+    "project_number": "706382638562",
+    "project_id": "brsp-96223",
+    "storage_bucket": "brsp-96223.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721585648120:android:94c6ec8c05585490fa660d",
+        "mobilesdk_app_id": "1:706382638562:android:7c20d3573ab817b2511dbb",
         "android_client_info": {
-          "package_name": "sports.cases"
+          "package_name": "gamequiz.brasport"
         }
       },
       "oauth_client": [
         {
-          "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
+          "client_id": "706382638562-1r1ir4ctn413bm1vfrr1ok9snanl2ua4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBbeWrzCmHXTaVAERLKuIheclwN00x-huw"
+          "current_key": "AIzaSyCs11c3jDVFMsdJ9sDsQ4gft0NU-1-dCDU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "721585648120-3dbmq9k0lnq7rhvh28r84a3stlacan8p.apps.googleusercontent.com",
+              "client_id": "706382638562-1r1ir4ctn413bm1vfrr1ok9snanl2ua4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

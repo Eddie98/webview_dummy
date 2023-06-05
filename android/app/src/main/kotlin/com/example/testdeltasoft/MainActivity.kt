@@ -1,4 +1,4 @@
-package sports.cases
+package gamequiz.brasport
 
 import io.flutter.embedding.android.FlutterActivity
 
